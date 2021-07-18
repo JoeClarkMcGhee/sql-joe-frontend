@@ -23,7 +23,7 @@ function ManageUsers() {
 
     return (
         <div className='card'>
-            <h1>Manage Users</h1>
+            <h2>Manage Users</h2>
             <LineBreak/>
             Some user
             <button className='btn' value='delete-user' onClick={confirmDelete}>Delete</button>

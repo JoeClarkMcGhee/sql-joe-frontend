@@ -3,11 +3,13 @@ import {Route, Switch} from 'react-router-dom'
 import ConnectToDB from './pages/ConnectToDB';
 import ManageUsers from "./pages/ManageUsers";
 import QueryDB from "./pages/QueryDB";
+import NavBar from "./navigation_bar/NavBar";
 
 
 function App() {
     return (
         <div>
+            <NavBar/>
             <Switch>
                 <Route path="/" exact>
                     <QueryDB/>

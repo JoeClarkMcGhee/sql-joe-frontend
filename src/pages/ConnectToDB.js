@@ -6,7 +6,7 @@ import {SubmitButton} from "../components/SubmitButton";
 function ConnectToDB() {
     return (
         <div className='card'>
-            <h1>Connect To Database</h1>
+            <h2>Connect To Database</h2>
             <LineBreak/>
             <form className>
                 <FormField type="text" label="Host"/>
