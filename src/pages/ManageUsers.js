@@ -1,8 +1,8 @@
 import {useState} from 'react'
 
-import {LineBreak} from "./utils/LineBreak";
-import {ConfirmationModal} from "./utils/ConfirmationModal";
-import {Backdrop} from "./utils/Backdrop";
+import {LineBreak} from "../components/LineBreak";
+import {ConfirmationModal} from "../components/ConfirmationModal";
+import {Backdrop} from "../components/Backdrop";
 
 function ManageUsers() {
 
@@ -34,4 +34,4 @@ function ManageUsers() {
     );
 }
 
-export {ManageUsers};
+export default ManageUsers;

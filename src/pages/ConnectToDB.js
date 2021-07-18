@@ -1,6 +1,6 @@
-import {FormField} from "./utils/FormField"
-import {LineBreak} from "./utils/LineBreak";
-import {SubmitButton} from "./utils/SubmitButton";
+import {FormField} from "../components/FormField";
+import {LineBreak} from "../components/LineBreak";
+import {SubmitButton} from "../components/SubmitButton";
 
 
 function ConnectToDB() {
@@ -19,4 +19,4 @@ function ConnectToDB() {
     );
 }
 
-export {ConnectToDB};
+export default ConnectToDB;
