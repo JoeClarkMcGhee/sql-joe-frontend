@@ -5,14 +5,14 @@ import {SubmitButton} from "./utils/SubmitButton";
 
 function ConnectToDB() {
     return (
-        <div>
+        <div className='card'>
             <h1>Connect To Database</h1>
-            <LineBreak />
-            <form>
-                <FormField type="text" label="F1"/>
-                <FormField type="text" label="F2"/>
-                <FormField type="text" label="F3"/>
-                <FormField type="text" label="F4"/>
+            <LineBreak/>
+            <form className>
+                <FormField type="text" label="Host"/>
+                <FormField type="text" label="Database"/>
+                <FormField type="text" label="User"/>
+                <FormField type="password" label="Password"/>
                 <SubmitButton value="Connect" uri="post to here"/>
             </form>
         </div>

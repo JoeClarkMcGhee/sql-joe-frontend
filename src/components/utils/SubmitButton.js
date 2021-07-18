@@ -3,7 +3,9 @@ function SubmitButton(props) {
     const submit = () => console.log(props.uri);
 
     return (
-        <input type="submit" value={props.value} onClick={submit}/>
+        <div>
+            <input type="submit" value={props.value} onClick={submit} className='btn'/>
+        </div>
     );
 }
 

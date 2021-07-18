@@ -1,11 +1,12 @@
 import {ConnectToDB} from './components/ConnectToDB';
-import {LineBreak} from "./components/utils/LineBreak";
+import {ManageUsers} from "./components/ManageUsers"
 
 
 function App() {
     return (
         <div>
             <ConnectToDB/>
+            <br></br>
             <ManageUsers/>
         </div>
     );
