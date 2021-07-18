@@ -4,6 +4,10 @@ import {SubmitButton} from "../components/SubmitButton";
 
 
 function ConnectToDB() {
+    function submit() {
+        console.log("submit the form")
+    }
+
     return (
         <div className='card'>
             <h2>Connect To Database</h2>
@@ -13,7 +17,7 @@ function ConnectToDB() {
                 <FormField type="text" label="Database"/>
                 <FormField type="text" label="User"/>
                 <FormField type="password" label="Password"/>
-                <SubmitButton value="Connect" uri="post to here"/>
+                <SubmitButton value="Connect" submit={submit}/>
             </form>
         </div>
     );

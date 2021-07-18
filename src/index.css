@@ -12,6 +12,10 @@ h1, h2 {
     color: #333333;
 }
 
+input, label {
+    display: block;
+}
+
 .btn {
     font: inherit;
     padding: 0.5rem 1.5rem;
@@ -52,4 +56,8 @@ h1, h2 {
     height: 100vh;
     top: 0;
     left: 0;
+}
+
+textarea {
+    overflow-y: scroll;
 }
