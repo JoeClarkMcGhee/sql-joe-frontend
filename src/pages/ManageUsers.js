@@ -1,37 +1,74 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 import {LineBreak} from "../components/LineBreak";
-import {ConfirmationModal} from "../components/ConfirmationModal";
-import {Backdrop} from "../components/Backdrop";
+import UserDetailList from "../components/user_detail/UserDetailList";
+
 
 function ManageUsers() {
 
     const [isModalVisible, setModelVisible] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [loadedUserData, setLoadedUserData] = useState([])
+    const [isBadRequest, setIsBadRequest] = useState(false)
+
+    useEffect(() => {
+        setIsLoading(true)
+        fetch(
+            "http://127.0.0.1:8000/api/v1/users/"
+        ).then((response) => {
+            return response.json();
+        }).then((data) => {
+            setIsLoading(false);
+            setLoadedUserData(data);
+        }).catch(error => {
+                setIsBadRequest(true);
+                setIsLoading(false);
+            }
+        );
+    }, [])
+
+
+    if (isLoading) {
+        return (
+            <div>
+                <LineBreak/>
+                <p>Loading....</p>
+            </div>
+        );
+    }
 
     function confirmDelete() {
         setModelVisible(true)
-    }
-
-    function deleteUser() {
-        console.log("sent http request to delete the user")
-        setModelVisible(false)
     }
 
     function cancelDelete() {
         setModelVisible(false)
     }
 
-    return (
-        <div className='card'>
-            <h2>Manage Users</h2>
-            <LineBreak/>
-            Some user
-            <button className='btn' value='delete-user' onClick={confirmDelete}>Delete</button>
-            {isModalVisible ?
-                <ConfirmationModal onCancel={cancelDelete} onDelete={deleteUser}/> : null}
-            {isModalVisible ? <Backdrop/> : null}
-        </div>
-    );
+    function deleteUser(userId) {
+        console.log("deleteUser: " + userId);
+        setModelVisible(false);
+    }
+
+    if (isBadRequest && !isLoading) {
+        return (
+            <div className='card'>
+                <h2>Manage Users</h2>
+                <LineBreak/>
+                Bad request
+            </div>
+        );
+    } else {
+        return (
+            <div className='card'>
+                <h2>Manage Users</h2>
+                <LineBreak/>
+                <UserDetailList userData={loadedUserData} isModalVisible={isModalVisible}
+                                onClick={confirmDelete} onCancel={cancelDelete}
+                                onDelete={deleteUser}/>
+            </div>
+        );
+    }
 }
 
 export default ManageUsers;
