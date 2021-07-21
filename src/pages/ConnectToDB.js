@@ -1,5 +1,7 @@
 import {LineBreak} from "../components/LineBreak";
 import {useRef} from "react";
+import ConnectionStatus from "../components/ConnectionStatus";
+import CurrentConnectionConfig from "../components/CurrentConnectionConfig";
 
 
 function ConnectToDB() {
@@ -60,6 +62,11 @@ function ConnectToDB() {
                     <button>Connect</button>
                 </div>
             </form>
+            <LineBreak/>
+            <h3>Current Connection Config</h3>
+            <CurrentConnectionConfig/>
+            <h3>Connection Status</h3>
+            <ConnectionStatus/>
         </div>
     );
 }
