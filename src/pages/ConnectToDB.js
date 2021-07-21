@@ -1,23 +1,64 @@
-import {FormField} from "../components/FormField";
 import {LineBreak} from "../components/LineBreak";
-import {SubmitButton} from "../components/SubmitButton";
+import {useRef} from "react";
 
 
 function ConnectToDB() {
-    function submit() {
-        console.log("submit the form")
+    const hostInputRef = useRef()
+    const portInputRef = useRef()
+    const databaseInputRef = useRef()
+    const userInputRef = useRef()
+    const passwordInputRef = useRef()
+
+    function submit(event) {
+        event.preventDefault();
+
+        const submittedData = {
+            host: hostInputRef.current.value,
+            port: parseInt(portInputRef.current.value),
+            database: databaseInputRef.current.value,
+            user: userInputRef.current.value,
+            password: passwordInputRef.current.value
+        }
+
+        fetch('http://127.0.0.1:8000/api/v1/database-connections/set-database-config/',
+            {
+                method: "POST",
+                body: JSON.stringify(submittedData),
+                headers: {
+                    'Content-Type': "application/json"
+                }
+            }
+        );
     }
 
     return (
         <div className='card'>
             <h2>Connect To Database</h2>
             <LineBreak/>
-            <form className>
-                <FormField type="text" label="Host"/>
-                <FormField type="text" label="Database"/>
-                <FormField type="text" label="User"/>
-                <FormField type="password" label="Password"/>
-                <SubmitButton value="Connect" submit={submit}/>
+            <form className onSubmit={submit}>
+                <div>
+                    <label htmlFor="host">Host: </label>
+                    <input type="text" id="host" ref={hostInputRef} required/>
+                </div>
+                <div>
+                    <label htmlFor="port">Port: </label>
+                    <input type="text" id="port" ref={portInputRef} required/>
+                </div>
+                <div>
+                    <label htmlFor="database">Database: </label>
+                    <input type="text" id="database" ref={databaseInputRef} required/>
+                </div>
+                <div>
+                    <label htmlFor="user">User: </label>
+                    <input type="text" id="user" ref={userInputRef} required/>
+                </div>
+                <div>
+                    <label htmlFor="password">Password: </label>
+                    <input type="password" id="password" ref={passwordInputRef} required/>
+                </div>
+                <div>
+                    <button>Connect</button>
+                </div>
             </form>
         </div>
     );
