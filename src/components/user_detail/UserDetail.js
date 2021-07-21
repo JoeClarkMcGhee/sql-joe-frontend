@@ -1,6 +1,5 @@
-import {ConfirmationModal} from "../ConfirmationModal";
-import {Backdrop} from "../Backdrop";
-
+import {Backdrop} from "./Backdrop";
+import {ConfirmationModal} from "./ConfirmationModal";
 
 function UserDetail(props) {
     return (
