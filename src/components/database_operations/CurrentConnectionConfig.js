@@ -1,6 +1,5 @@
 import {useEffect, useState} from "react";
-import {LineBreak} from "./LineBreak";
-
+import {LineBreak} from "../LineBreak";
 
 function CurrentConnectionConfig() {
 

@@ -1,8 +1,7 @@
 import {LineBreak} from "../components/LineBreak";
 import {useRef} from "react";
-import ConnectionStatus from "../components/ConnectionStatus";
-import CurrentConnectionConfig from "../components/CurrentConnectionConfig";
-
+import ConnectionStatus from "../components/database_operations/ConnectionStatus";
+import CurrentConnectionConfig from "../components/database_operations/CurrentConnectionConfig";
 
 function ConnectToDB() {
     const hostInputRef = useRef()
