@@ -12,7 +12,7 @@ function CurrentConnectionConfig() {
         ).then((response) => {
             return response.json();
         }).then((data) => {
-            const values = [data.host, data.port, data.database, data.user]
+            const values = [data.host, data.database, data.port, data.user]
             setIsLoading(false);
             setLoadedConfig(values);
         });

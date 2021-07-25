@@ -36,7 +36,7 @@ function ConnectToDB() {
         <div className='card'>
             <h2>Connect To Database</h2>
             <LineBreak/>
-            <form className onSubmit={submit}>
+            <form onSubmit={submit}>
                 <div>
                     <label htmlFor="host">Host: </label>
                     <input type="text" id="host" ref={hostInputRef} required/>
@@ -57,8 +57,9 @@ function ConnectToDB() {
                     <label htmlFor="password">Password: </label>
                     <input type="password" id="password" ref={passwordInputRef} required/>
                 </div>
+                <br/>
                 <div>
-                    <button>Connect</button>
+                    <button className='btn'>Connect</button>
                 </div>
             </form>
             <LineBreak/>

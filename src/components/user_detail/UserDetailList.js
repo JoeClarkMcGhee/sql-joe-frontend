@@ -2,10 +2,6 @@ import UserDetail from "./UserDetail";
 
 function UserDetailList(props) {
 
-    const onDeleteButtonFactory = (function (id) {
-        return () => props.onDelete(id)
-    })
-
     return (
         <ul>
             {
@@ -18,7 +14,6 @@ function UserDetailList(props) {
                         isModalVisible={props.isModalVisible}
                         onClick={props.onClick}
                         onCancel={props.onCancel}
-                        // onDelete={onDeleteButtonFactory(user.id)}
                         onDelete={props.onDelete}
                     />;
                 })

@@ -1,5 +1,5 @@
 import {LineBreak} from "../components/LineBreak";
-import {SubmitButton} from "../components/SubmitButton";
+import QueryDBForm from "../components/database_operations/QueryDBForm";
 
 function QueryDB() {
     function submit() {
@@ -10,9 +10,7 @@ function QueryDB() {
         <div className='card'>
             <h2>Query Database</h2>
             <LineBreak/>
-            <label>Query panel</label>
-            <textarea rows="10" cols="50"/>
-            <SubmitButton value='Execute SQL' submit={submit}/>
+            <QueryDBForm/>
         </div>
     )
 }

@@ -46,7 +46,6 @@ function ManageUsers() {
     }
 
     function deleteUser(userId) {
-        console.log("deleteUser: " + userId);
         setModelVisible(false);
     }
 
