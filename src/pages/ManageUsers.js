@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react'
-
 import {LineBreak} from "../components/LineBreak";
 import UserDetailList from "../components/user_detail/UserDetailList";
 
@@ -14,7 +13,12 @@ function ManageUsers() {
     useEffect(() => {
         setIsLoading(true)
         fetch(
-            "http://127.0.0.1:8000/api/v1/users/"
+            "http://127.0.0.1:8000/api/v1/users/", {
+                headers: {
+                    'Content-Type': "application/json",
+                    'Authorization': "token 09d7b34a1354d82b16851f29d8f7f981415b599b"
+                }
+            }
         ).then((response) => {
             return response.json();
         }).then((data) => {
@@ -46,7 +50,19 @@ function ManageUsers() {
     }
 
     function deleteUser(userId) {
-        setModelVisible(false);
+        fetch('http://127.0.0.1:8000/api/v1/users/delete/' + userId + "/",
+            {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': "application/json",
+                    'Authorization': "token 09d7b34a1354d82b16851f29d8f7f981415b599b"
+                }
+            }
+        ).then((response) => {
+            setModelVisible(false)
+            window.location.reload()
+            }
+        )
     }
 
     if (isBadRequest && !isLoading) {
@@ -57,17 +73,19 @@ function ManageUsers() {
                 Bad request
             </div>
         );
-    } else {
-        return (
-            <div className='card'>
-                <h2>Manage Users</h2>
-                <LineBreak/>
-                <UserDetailList userData={loadedUserData} isModalVisible={isModalVisible}
-                                onClick={confirmDelete} onCancel={cancelDelete}
-                                onDelete={deleteUser}/>
-            </div>
-        );
     }
+    return (
+        <div className='card'>
+            <h2>Manage Users</h2>
+            <LineBreak/>
+            <UserDetailList userData={loadedUserData}
+                            isModalVisible={isModalVisible}
+                            onClick={confirmDelete}
+                            onCancel={cancelDelete}
+                            onDelete={deleteUser}
+            />
+        </div>
+    );
 }
 
 export default ManageUsers;

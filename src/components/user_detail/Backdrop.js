@@ -1,6 +1,9 @@
-function Backdrop() {
+function Backdrop(props) {
+    if (props.isModalVisible) {
+        return <div className="backdrop"/>
+    }
     return (
-        <div className="backdrop"/>
+        <div/>
     )
 }
 
