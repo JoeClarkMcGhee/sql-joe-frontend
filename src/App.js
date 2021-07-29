@@ -4,9 +4,17 @@ import ConnectToDB from './pages/ConnectToDB';
 import ManageUsers from "./pages/ManageUsers";
 import QueryDB from "./pages/QueryDB";
 import NavBar from "./components/navigation_bar/NavBar";
+import LogInForm from "./pages/LogInForm";
+import useToken from "./components/useToken";
 
 
 function App() {
+    const {token, setToken} = useToken();
+
+    if (!token) {
+        return <LogInForm setToken={setToken}/>
+    }
+
     return (
         <div>
             <NavBar/>
