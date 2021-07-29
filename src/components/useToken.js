@@ -4,14 +4,18 @@ function useToken() {
 
     const getToken = () => {
         const token = sessionStorage.getItem('token');
-        return JSON.parse(token);
+        if (token) {
+            return JSON.parse(token);
+        } else return undefined;
     }
 
     const [token, setToken] = useState(getToken());
 
     const saveTokenToSessionStorage = token => {
-        sessionStorage.setItem('token', JSON.stringify(token));
-        setToken(token.token);
+        if (token) {
+            sessionStorage.setItem('token', JSON.stringify(token));
+            setToken(token.token);
+        }
     };
 
 

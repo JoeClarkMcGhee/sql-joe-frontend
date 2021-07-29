@@ -3,6 +3,11 @@ import {Link} from "react-router-dom";
 import styleClasses from './NavBar.module.css'
 
 function NavBar() {
+    function logOut() {
+        sessionStorage.removeItem("token")
+        window.location.reload()
+    }
+
     return (
         <header className={styleClasses.header}>
             <div className={styleClasses.logo}>BrowserSQL</div>
@@ -16,6 +21,9 @@ function NavBar() {
                     </li>
                     <li>
                         <Link to='/manage-users'>Manage Users</Link>
+                    </li>
+                    <li>
+                        <Link onClick={logOut}>Log out</Link>
                     </li>
                 </ul>
             </nav>

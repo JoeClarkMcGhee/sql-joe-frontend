@@ -31,9 +31,10 @@ class LogInForm extends Component {
                 this.setState({invalidLogin: true})
             } else {
                 this.setState({invalidLogin: false})
+                return response.json()
             }
-            return response.json()
         }).then((data) => {
+            if (this.state.invalidLogin) return
             this.props.setToken(data.key)
             window.location.reload()
         })
