@@ -1,5 +1,3 @@
-/*todo: refactor this ccs module*/
-
 * {
     box-sizing: border-box;
 }
@@ -34,7 +32,7 @@ input, label {
     border-radius: 4px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     padding: 2rem;
-    width: 63rem;
+    width: 100%;
 }
 
 .modal {
