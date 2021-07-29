@@ -13,23 +13,25 @@ class QueryDBForm extends Component {
         }
     }
 
-    submit (event) {
+    submit(event) {
         event.preventDefault();
         const submittedData = {
             query: this.queryInputRef.current.value
         }
+        const token = sessionStorage.getItem('token');
+        const tokenStr = JSON.parse(token);
         fetch('http://127.0.0.1:8000/api/v1/database-connections/query-remote-db/',
             {
                 method: "POST",
                 body: JSON.stringify(submittedData),
                 headers: {
-                    'Content-Type': "application/json"
+                    'Content-Type': "application/json",
+                    'Authorization': "token " + tokenStr
                 }
             }
         ).then((response) => {
             return response.json();
         }).then((data) => {
-            debugger;
             this.setState({queryResults: data})
         });
     }
@@ -40,7 +42,8 @@ class QueryDBForm extends Component {
                 <form onSubmit={this.submit}>
                     <div>
                         <label htmlFor="query-panel">Query Panel: </label>
-                        <textarea rows="10" cols="50" id="query-panel" ref={this.queryInputRef} required/>
+                        <textarea rows="10" cols="50" id="query-panel" ref={this.queryInputRef}
+                                  required/>
                     </div>
                     <br/>
                     <div>
