@@ -26,6 +26,7 @@ function App() {
                     <Route path="/connect">
                         <ConnectToDB/>
                     </Route>
+                    # todo: add a form to manage users to create a user
                     <Route path="/manage-users">
                         <ManageUsers/>
                     </Route>

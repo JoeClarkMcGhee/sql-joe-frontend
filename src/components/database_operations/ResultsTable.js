@@ -3,6 +3,7 @@ import Row from "./Row";
 
 
 class ResultsTable extends Component {
+    // todo: also look for "bad remote db connection"
     constructor(props) {
         super(props);
     }

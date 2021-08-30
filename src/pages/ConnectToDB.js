@@ -32,6 +32,7 @@ function ConnectToDB() {
                 }
             }
         );
+        // todo: We need to chain a page refresh here (I have mentioned this in the report)
     }
 
     return (

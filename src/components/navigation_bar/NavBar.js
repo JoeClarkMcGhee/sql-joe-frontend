@@ -8,6 +8,7 @@ function NavBar() {
         window.location.reload()
     }
 
+    // todo: conditionally show nav bar items based on user class
     return (
         <header className={styleClasses.header}>
             <div className={styleClasses.logo}>BrowserSQL</div>
