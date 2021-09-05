@@ -36,6 +36,7 @@ class LogInForm extends Component {
         }).then((data) => {
             if (this.state.invalidLogin) return
             this.props.setToken(data.key)
+            this.props.setIsAdmin(data.is_admin)
             window.location.reload()
         })
     }
