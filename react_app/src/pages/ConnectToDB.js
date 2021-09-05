@@ -22,7 +22,7 @@ function ConnectToDB() {
         }
         const token = sessionStorage.getItem('token');
         const tokenStr = JSON.parse(token);
-        fetch('http://127.0.0.1:8000/api/v1/database-connections/set-database-config/',
+        fetch('http://127.0.0.1:80/api/v1/database-connections/set-database-config/',
             {
                 method: "POST",
                 body: JSON.stringify(submittedData),

@@ -13,7 +13,7 @@ function ManageUsers() {
     useEffect(() => {
         setIsLoading(true)
         fetch(
-            "http://127.0.0.1:8000/api/v1/users/", {
+            "http://127.0.0.1:80/api/v1/users/", {
                 headers: {
                     'Content-Type': "application/json",
                     'Authorization': "token 09d7b34a1354d82b16851f29d8f7f981415b599b"
@@ -50,7 +50,7 @@ function ManageUsers() {
     }
 
     function deleteUser(userId) {
-        fetch('http://127.0.0.1:8000/api/v1/users/delete/' + userId + "/",
+        fetch('http://127.0.0.1:80/api/v1/users/delete/' + userId + "/",
             {
                 method: "DELETE",
                 headers: {

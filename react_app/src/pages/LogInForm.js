@@ -18,7 +18,7 @@ class LogInForm extends Component {
             username: this.usernameRef.current.value,
             password: this.passwordRef.current.value
         }
-        fetch("http://127.0.0.1:8000/api/v1/dj-rest-auth/login/",
+        fetch("http://127.0.0.1:80/api/v1/dj-rest-auth/login/",
             {
                 method: "POST",
                 body: JSON.stringify(credentials),
