@@ -15,6 +15,7 @@ h1, h2 {
 input, label {
     display: block;
     font-size: 20px;
+    width: 20%;
 
 }
 
@@ -96,5 +97,9 @@ textarea {
     margin: 0 auto;
     padding: 4px 8px;
     font-size: x-large;
+}
+
+.css-2b097c-container {
+ width: 20%;
 }
 
