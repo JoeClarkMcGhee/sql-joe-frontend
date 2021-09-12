@@ -1,6 +1,6 @@
 import {Route, Switch} from 'react-router-dom'
 
-import ConnectToDB from './pages/ConnectToDB';
+import DataBaseAdministration from './pages/DataBaseAdministration';
 import ManageUsers from "./pages/ManageUsers";
 import QueryDB from "./pages/QueryDB";
 import NavBar from "./components/navigation_bar/NavBar";
@@ -34,7 +34,7 @@ function App() {
                     {
                         isAdmin ?
                             <Route path="/connect">
-                                <ConnectToDB/>
+                                <DataBaseAdministration/>
                             </Route> : null
                     }
                     {

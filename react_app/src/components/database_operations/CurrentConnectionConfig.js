@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {LineBreak} from "../LineBreak";
 
-function CurrentConnectionConfig() {
+function CurrentConnectionConfig(props) {
 
     const [isLoading, setIsLoading] = useState(true);
     const [loadedConfig, setLoadedConfig] = useState(false)
@@ -9,8 +9,8 @@ function CurrentConnectionConfig() {
     useEffect(() => {
         const token = sessionStorage.getItem('token');
         const tokenStr = JSON.parse(token);
-        fetch(
-            "http://127.0.0.1:8000/api/v1/database-connections/get-database-config/", {
+        const url = "http://127.0.0.1:8000/api/v1/database-connections/get-specific-database-config/?short_name=" + props.dbName
+        fetch(url, {
                 headers: {
                     'Content-Type': "application/json",
                     'Authorization': "token " + tokenStr
@@ -24,7 +24,7 @@ function CurrentConnectionConfig() {
             setLoadedConfig(values);
         });
 
-    }, [])
+    })
 
     if (isLoading) {
         return (

@@ -3,13 +3,12 @@ import Row from "./Row";
 
 
 class ResultsTable extends Component {
-    // todo: also look for "bad remote db connection"
     constructor(props) {
         super(props);
     }
 
     getHeader = function () {
-        if (!this.props.data.includes("bad query")) {
+        if (!this.props.data.includes("bad")) {
             let keys = Object.keys(this.props.data[0]);
             return keys.map((key) => {
                 return (
@@ -23,7 +22,7 @@ class ResultsTable extends Component {
 
     getRows = function () {
         let items = this.props.data;
-        if (!items.includes("bad query")) {
+        if (!items.includes("bad")) {
             let keys = Object.keys(this.props.data[0]);
             return items.map((row) => {
                 return (
@@ -46,7 +45,8 @@ class ResultsTable extends Component {
                     {this.getRows()}
                     </tbody>
                 </table>
-                {this.props.data.includes("bad query") ? <h2>{this.props.data}</h2> : null}
+                {this.props.data.includes("bad") ?
+                    <h2>{this.props.data}</h2> : null}
             </div>
         );
     }

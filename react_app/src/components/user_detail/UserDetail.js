@@ -2,7 +2,6 @@ import {Backdrop} from "./Backdrop";
 import {ConfirmationModal} from "./ConfirmationModal";
 
 function UserDetail(props) {
-    // todo: use an isAdmin function
     if (props.name === "joe.clark-mcghee") {
         return <div/>
     }
