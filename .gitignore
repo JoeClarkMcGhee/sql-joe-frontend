@@ -9,6 +9,7 @@
 /.pnp
 .pnp.js
 /node_modules/*
+react_app/node_modules/
 
 # testing
 /coverage
