@@ -1,26 +1,42 @@
 import {Component, createRef} from "react";
 import ResultsTable from "./ResultsTable";
 import {LineBreak} from "../LineBreak";
+import Select from 'react-select'
 
 
 class QueryDBForm extends Component {
     constructor(props) {
         super(props);
         this.queryInputRef = createRef()
+        this.option = createRef()
         this.submit = this.submit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.state = {
-            queryResults: []
+            queryResults: [],
+            remoteDatabase: null,
         }
+        this.options = [
+            {value: 'remote-db-1', label: 'remote-db-1'},
+            {value: 'remote-db-2', label: 'remote-db-2'},
+            {value: 'remote-db-3', label: 'remote-db-3'},
+        ]
+
+    }
+
+    handleChange = (option) => {
+        this.setState({remoteDatabase: option})
     }
 
     submit(event) {
         event.preventDefault();
+        debugger;
         const submittedData = {
-            query: this.queryInputRef.current.value
+            query: this.queryInputRef.current.value,
+            short_name: this.state.remoteDatabase.value
         }
         const token = sessionStorage.getItem('token');
         const tokenStr = JSON.parse(token);
-        fetch('http://127.0.0.1:8000/api/v1/database-connections/query-remote-db/',
+        fetch('http://127.0.0.1:8000/api/v1/database-connections/query-specific-remote-db/',
             {
                 method: "POST",
                 body: JSON.stringify(submittedData),
@@ -39,17 +55,25 @@ class QueryDBForm extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.submit}>
+                <form onSubmit={this.submit} id="query-db-form">
                     <div>
-                        <label htmlFor="query-panel">Query Panel: </label>
+                        <label htmlFor="query-panel">Query Panel:</label>
+                        <br/>
                         <textarea rows="10" cols="50" id="query-panel" ref={this.queryInputRef}
                                   required/>
+                    </div>
+                    <br/>
+                    <div>
+                        <label htmlFor="select-a-db">Select a DB:</label>
+                        <br/>
+                        <Select options={this.options} onChange={this.handleChange}/>
                     </div>
                     <br/>
                     <div>
                         <button className='btn'>Submit</button>
                     </div>
                 </form>
+                <br/>
                 <LineBreak/>
                 {
                     this.state.queryResults.length > 0 ?
