@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import {LineBreak} from "../components/LineBreak";
 import UserDetailList from "../components/user_detail/UserDetailList";
+import RegisterUser from "../components/user_detail/RegisterUser";
 
 
 function ManageUsers() {
@@ -84,8 +85,11 @@ function ManageUsers() {
                             onCancel={cancelDelete}
                             onDelete={deleteUser}
             />
+            <LineBreak/>
+            <RegisterUser/>
         </div>
     );
 }
+
 
 export default ManageUsers;
