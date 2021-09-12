@@ -7,14 +7,19 @@ import NavBar from "./components/navigation_bar/NavBar";
 import LogInForm from "./pages/LogInForm";
 import useToken from "./components/useToken";
 import useIsAdmin from "./components/useIsAdmin";
+import useAllowedDatabases from "./components/useAllowedDatabases";
 
 
 function App() {
     const {token, setToken} = useToken();
     const {isAdmin, setIsAdmin} = useIsAdmin();
+    const {allowedDatabases, setAllowedDatabases} = useAllowedDatabases();
 
     if (!token) {
-        return <LogInForm setToken={setToken} setIsAdmin={setIsAdmin}/>
+        return <LogInForm setToken={setToken}
+                          setIsAdmin={setIsAdmin}
+                          setAllowedDatabases={setAllowedDatabases}
+        />
     }
 
     // # todo: add a form to manage users to create a user
@@ -24,7 +29,7 @@ function App() {
             <main>
                 <Switch>
                     <Route path="/" exact>
-                        <QueryDB/>
+                        <QueryDB allowedDatabases={allowedDatabases}/>
                     </Route>
                     {
                         isAdmin ?

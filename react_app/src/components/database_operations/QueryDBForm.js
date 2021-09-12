@@ -15,12 +15,7 @@ class QueryDBForm extends Component {
             queryResults: [],
             remoteDatabase: null,
         }
-        this.options = [
-            {value: 'remote-db-1', label: 'remote-db-1'},
-            {value: 'remote-db-2', label: 'remote-db-2'},
-            {value: 'remote-db-3', label: 'remote-db-3'},
-        ]
-
+        this.options = JSON.parse(sessionStorage.getItem('allowedDatabases'))
     }
 
     handleChange = (option) => {
@@ -29,7 +24,6 @@ class QueryDBForm extends Component {
 
     submit(event) {
         event.preventDefault();
-        debugger;
         const submittedData = {
             query: this.queryInputRef.current.value,
             short_name: this.state.remoteDatabase.value
