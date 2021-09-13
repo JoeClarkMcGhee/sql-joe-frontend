@@ -9,7 +9,7 @@ function CurrentConnectionConfig(props) {
     useEffect(() => {
         const token = sessionStorage.getItem('token');
         const tokenStr = JSON.parse(token);
-        const url = "http://127.0.0.1:8000/api/v1/database-connections/get-specific-database-config/?short_name=" + props.dbName
+        const url = "http://127.0.0.1:80/api/v1/database-connections/get-specific-database-config/?short_name=" + props.dbName
         fetch(url, {
                 headers: {
                     'Content-Type': "application/json",

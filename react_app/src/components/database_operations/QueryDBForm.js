@@ -30,7 +30,7 @@ class QueryDBForm extends Component {
         }
         const token = sessionStorage.getItem('token');
         const tokenStr = JSON.parse(token);
-        fetch('http://127.0.0.1:8000/api/v1/database-connections/query-specific-remote-db/',
+        fetch('http://127.0.0.1:80/api/v1/database-connections/query-specific-remote-db/',
             {
                 method: "POST",
                 body: JSON.stringify(submittedData),

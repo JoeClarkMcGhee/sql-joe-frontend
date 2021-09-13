@@ -10,7 +10,7 @@ function ConnectionStatus(props) {
         const token = sessionStorage.getItem('token');
         const tokenStr = JSON.parse(token);
         fetch(
-            "http://127.0.0.1:8000/api/v1/database-connections/get-specific-db-status/?short_name="+ props.dbName, {
+            "http://127.0.0.1:80/api/v1/database-connections/get-specific-db-status/?short_name="+ props.dbName, {
                 headers: {
                     'Content-Type': "application/json",
                     'Authorization': "token " + tokenStr

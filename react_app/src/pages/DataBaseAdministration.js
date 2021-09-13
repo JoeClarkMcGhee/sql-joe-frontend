@@ -43,7 +43,7 @@ function DataBaseAdministration() {
         }
         const token = sessionStorage.getItem('token');
         const tokenStr = JSON.parse(token);
-        fetch('http://127.0.0.1:8000/api/v1/database-connections/create-or-update-connection/',
+        fetch('http://127.0.0.1:80/api/v1/database-connections/create-or-update-connection/',
             {
                 method: "POST",
                 body: JSON.stringify(submittedData),

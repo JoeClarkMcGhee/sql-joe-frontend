@@ -13,11 +13,13 @@ function ManageUsers() {
 
     useEffect(() => {
         setIsLoading(true)
+        const token = sessionStorage.getItem('token');
+        const tokenStr = JSON.parse(token);
         fetch(
-            "http://127.0.0.1:8000/api/v1/users/", {
+            "http://127.0.0.1:80/api/v1/users/", {
                 headers: {
                     'Content-Type': "application/json",
-                    'Authorization': "token 09d7b34a1354d82b16851f29d8f7f981415b599b"
+                    'Authorization': "token " + tokenStr
                 }
             }
         ).then((response) => {
@@ -51,17 +53,19 @@ function ManageUsers() {
     }
 
     function deleteUser(userId) {
-        fetch('http://127.0.0.1:8000/api/v1/users/delete/' + userId + "/",
+        const token = sessionStorage.getItem('token');
+        const tokenStr = JSON.parse(token);
+        fetch('http://127.0.0.1:80/api/v1/users/delete/' + userId + "/",
             {
                 method: "DELETE",
                 headers: {
                     'Content-Type': "application/json",
-                    'Authorization': "token 09d7b34a1354d82b16851f29d8f7f981415b599b"
+                    'Authorization': "token " + tokenStr
                 }
             }
         ).then((response) => {
-            setModelVisible(false)
-            window.location.reload()
+                setModelVisible(false)
+                window.location.reload()
             }
         )
     }

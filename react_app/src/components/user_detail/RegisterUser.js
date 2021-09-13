@@ -17,7 +17,7 @@ function RegisterUser() {
             password2: password2InputRef.current.value,
             allowed_dbs: allowedDBsInputRef.current.value
         }
-        fetch('http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/',
+        fetch('http://127.0.0.1:80/api/v1/dj-rest-auth/registration/',
             {
                 method: "POST",
                 body: JSON.stringify(submittedData),
@@ -27,9 +27,6 @@ function RegisterUser() {
             }
         ).then(() => window.location.reload());
     }
-
-    // https://docs.djangoproject.com/en/dev/ref/csrf/#ajax
-
 
     return (
         <div>
